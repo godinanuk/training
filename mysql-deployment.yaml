@@ -8,6 +8,14 @@ spec:
   selector:
     app: mysql
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-root-password
+type: Opaque
+data:
+  password: bTNtMHJ5
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -27,9 +35,11 @@ spec:
       - image: mysql/mysql-server:latest 
         name: mysql
         env:
-          # Use secret in real usage
         - name: MYSQL_ROOT_PASSWORD
-          value: m3m0ry 
+          valueFrom:
+            secretKeyRef:
+              name: mysql-root-password
+              key: password 
         ports:
         - containerPort: 3306
           name: mysql
