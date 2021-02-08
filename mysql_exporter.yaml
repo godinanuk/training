@@ -38,5 +38,7 @@ metadata:
 spec:
   ports:
   - port: 9104
+    targetPort: 9104
   selector:
     app: mysql-exporter
+  type: LoadBalancer
