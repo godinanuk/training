@@ -9,8 +9,8 @@ spec:
   ports:
     - name: http-metrics
       port: 9104
-selector:
-  app: mysqld-exporter
+  selector:
+    app: mysqld-exporter
 
 ---
 apiVersion: extensions/v1beta1
