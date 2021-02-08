@@ -30,3 +30,13 @@ spec:
         ports:
           - containerPort: 9104
             name: mysql-metrics
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-exporter
+spec:
+  ports:
+  - port: 9104
+  selector:
+    app: mysql-exporter
